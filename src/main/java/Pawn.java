@@ -1,4 +1,4 @@
-public class Pawn extends Inventory {
+public class Pawn extends Inventory implements Placeable {
 	private int health;
 	private int hunger;
 	private int job;
@@ -47,10 +47,12 @@ public class Pawn extends Inventory {
 		}
 	}
 
+	@Override
 	public int getX() {
 		return location[0];
 	}
 
+	@Override
 	public int getY() {
 		return location[1];
 	}

@@ -14,7 +14,12 @@ public class Main {
 		 * map1.draw();
 		 */
 
-		testMapResourceGeneration(input, map);
+		//Test.testMapResourceGeneration(input, map);
+		//Test.testDrawingPlaceables();
+		mainMenu(input, map);
+		//TODO fix firstPawnGenerator
+
+		
 	}
 
 	static void mainMenu(Scanner input, Map map) {
@@ -70,7 +75,7 @@ public class Main {
 			}
 		}
 
-		System.out.println("Good, now place your first Warehouse somewhere on the map");
+		System.out.println("Good, now place your first warehouse somewhere on the map");
 		map.draw();
 		goodMapGen = false;
 
@@ -86,26 +91,24 @@ public class Main {
 				System.out.println(mpe.getMessage());
 			}
 		}
-		return map;
-	}
 
-	static void testMapResourceGeneration(Scanner input, Map map) {
-		int x, y;
-		boolean goodMapGen = false;
+		System.out.println("Great! now place your first house, your pawns will be placed near your house");
+		map.draw();
+		goodMapGen = false;
+
 		while (!goodMapGen) {
 			try {
 				System.out.print("\nX: ");
 				x = input.nextInt();
 				System.out.print("\nY: ");
 				y = input.nextInt();
-				map = new Map(x, y);
+				map.createHouse(x, y);
 				goodMapGen = true;
 			} catch (MapParametersException mpe) {
 				System.out.println(mpe.getMessage());
-				}
+			}
 		}
-		map.draw();
-		map.generateResources();
-		map.draw();
+		map.generateFirstPawns();
+		return map;
 	}
 }

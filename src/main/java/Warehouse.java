@@ -1,4 +1,4 @@
-public class Warehouse extends Inventory {
+public class Warehouse extends Inventory implements Placeable {
 	private int[] location = new int[2];
 	// [x][y] base 1
 	static final char DISPLAY_CHAR = 'x';
@@ -12,10 +12,12 @@ public class Warehouse extends Inventory {
 		return location;
 	}
 
+	@Override
 	public int getX() {
 		return location[0];
 	}
 
+	@Override
 	public int getY() {
 		return location[1];
 	}
